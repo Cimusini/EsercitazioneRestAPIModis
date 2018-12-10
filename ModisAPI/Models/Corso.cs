@@ -8,7 +8,7 @@ namespace ModisAPI.Models
         public DateTime DataInizio { get; set; }
         public int DataInOre { get; set; }
         public int Livello { get; set; }
-        public int NumeroMassimoPartecipanti { get; set; }
+        public int NumeroMassimoPartecipanti { get; set; } //aggiunta dopo
 
     }
 }
