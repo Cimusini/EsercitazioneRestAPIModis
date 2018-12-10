@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace ModisAPI.Models
 {
     public class Corso
@@ -9,6 +11,7 @@ namespace ModisAPI.Models
         public int DataInOre { get; set; }
         public int Livello { get; set; }
         public int NumeroMassimoPartecipanti { get; set; } //aggiunta dopo
+        public IList<StudenteCorso> StudenteCorsi { get; set; }
 
     }
 }
