@@ -6,16 +6,26 @@ using System.Threading.Tasks;
 
 namespace ModisAPI.WorkerServices
 {
-    public class WorkerServiceOracleDb : IWorkerServiceStudenti
+
+    public class WorkerServiceSQLServerDB : IWorkerServiceStudenti
     {
+        private ModisContext db;
+
+        public WorkerServiceSQLServerDB()
+        {
+            db = new ModisContext();
+        }
+
         public List<Studente> RestituisciListaStudenti()
         {
-            throw new NotImplementedException();
+            return db.Studenti.ToList();
         }
 
         public Studente RestituisciStudente(int id)
         {
-            throw new NotImplementedException();
+
+            //return db.Studenti.Find(id); se siamo sicuri sia una chiave 
+            return db.Studenti.Where(x => x.Id == id).FirstOrDefault();
         }
     }
 
