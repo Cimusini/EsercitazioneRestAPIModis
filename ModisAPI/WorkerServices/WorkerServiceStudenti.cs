@@ -16,6 +16,12 @@ namespace ModisAPI.WorkerServices
             db = new ModisContext();
         }
 
+        public void CreaStudente(Studente studente)
+        {
+            db.Studenti.Add(studente);
+            db.SaveChangesAsync();
+        }
+
         public List<Studente> RestituisciListaStudenti()
         {
             return db.Studenti.ToList();
@@ -31,6 +37,11 @@ namespace ModisAPI.WorkerServices
 
     public class WorkerServiceStudenti : IWorkerServiceStudenti
     {
+        public void CreaStudente(Studente studente)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Studente> RestituisciListaStudenti()
         {
             var studente1 = new Studente { Id = 1, Cognome = "Mario", Nome = "Rossi" };
