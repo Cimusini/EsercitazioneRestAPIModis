@@ -22,6 +22,13 @@ namespace ModisAPI.WorkerServices
             db.SaveChanges();
         }
 
+        public void EliminaStudente(int id)
+        {
+            var studente = db.Studenti.Find(id);
+            db.Studenti.Remove(studente);
+            db.SaveChanges();
+        }
+
         public void ModificaStudente(Studente studenteModificato)
         {
             /*var studente = db.Studenti.Find(studenteModificato.Id);
@@ -50,6 +57,11 @@ namespace ModisAPI.WorkerServices
     public class WorkerServiceStudenti : IWorkerServiceStudenti
     {
         public void CreaStudente(Studente studente)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EliminaStudente(int id)
         {
             throw new NotImplementedException();
         }
