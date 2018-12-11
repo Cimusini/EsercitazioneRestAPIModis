@@ -34,10 +34,10 @@ namespace ModisAPI.Models
 
         {
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=ModisDB2;" +
-                              "Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = "Data Source=Modis.db;";
 
-            optionsBuilder.UseSqlServer(connection);
+
+            optionsBuilder.UseSqlite(connection);
 
         }
 
@@ -45,3 +45,4 @@ namespace ModisAPI.Models
 
 }
 
+/*  /Users/Cimusini/SQLITEDATABASES/SQLITEDB1.sqlite;  */
