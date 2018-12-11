@@ -52,6 +52,7 @@ namespace ModisAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            worker.EliminaStudente(id);
         }
     }
 }
