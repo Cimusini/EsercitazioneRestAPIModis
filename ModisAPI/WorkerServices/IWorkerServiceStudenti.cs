@@ -7,5 +7,8 @@ namespace ModisAPI.WorkerServices
     {
         List<Studente> RestituisciListaStudenti();
         Studente RestituisciStudente(int id);
+        void CreaStudente(Studente studente);
+        void ModificaStudente(Studente studenteModificato);
+        void EliminaStudente(int id);
     }
 }
