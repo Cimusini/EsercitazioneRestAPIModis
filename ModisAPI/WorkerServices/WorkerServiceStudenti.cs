@@ -19,7 +19,19 @@ namespace ModisAPI.WorkerServices
         public void CreaStudente(Studente studente)
         {
             db.Studenti.Add(studente);
-            db.SaveChangesAsync();
+            db.SaveChanges();
+        }
+
+        public void ModificaStudente(Studente studenteModificato)
+        {
+            /*var studente = db.Studenti.Find(studenteModificato.Id);
+            studente.Nome = studenteModificato.Nome;
+            studente.Cognome = studenteModificato.Cognome;
+            studente.Indirizzo = studenteModificato.Indirizzo; equivale alla riga di codice d.entry*/
+
+            db.Entry(studenteModificato).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+
         }
 
         public List<Studente> RestituisciListaStudenti()
@@ -38,6 +50,11 @@ namespace ModisAPI.WorkerServices
     public class WorkerServiceStudenti : IWorkerServiceStudenti
     {
         public void CreaStudente(Studente studente)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ModificaStudente(Studente studenteModificato)
         {
             throw new NotImplementedException();
         }
