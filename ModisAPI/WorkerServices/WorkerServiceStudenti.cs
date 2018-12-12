@@ -1,4 +1,5 @@
-﻿using ModisAPI.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ModisAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,9 +41,23 @@ namespace ModisAPI.WorkerServices
 
         }
 
-        public List<Studente> RestituisciListaStudenti()
+        public List<ViewModelStudente> RestituisciListaStudenti()
         {
-            return db.Studenti.ToList();
+            return db.Studenti.Include("Corsi").
+            Select(y => new ViewModelStudente
+            {
+                Id = y.Id,
+                NomeCompleto = y.Nome + " " + y.Cognome,
+                Corsi = y.StudenteCorsi.Select(
+                    z => new Corso
+                    {
+                        CorsoId = z.Corso.CorsoId,
+                        Nome = z.Corso.Nome,
+                        DataInizio = z.Corso.DataInizio,
+                        Livello = z.Corso.Livello,
+                        NumeroMassimoPartecipanti = z.Corso.NumeroMassimoPartecipanti
+                    }).ToList()
+            }).ToList();
         }
 
         public Studente RestituisciStudente(int id)
@@ -51,36 +66,5 @@ namespace ModisAPI.WorkerServices
             //return db.Studenti.Find(id); se siamo sicuri sia una chiave 
             return db.Studenti.Where(x => x.Id == id).FirstOrDefault();
         }
-    }
-
-    public class WorkerServiceStudenti : IWorkerServiceStudenti
-    {
-        public void CreaStudente(Studente studente)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CancellaStudente(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ModificaStudente(Studente studenteModificato)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Studente> RestituisciListaStudenti()
-        {
-            var studente1 = new Studente { Id = 1, Cognome = "Mario", Nome = "Rossi" };
-            var studente2 = new Studente { Id = 2, Cognome = "MastroCesare", Nome = "Francesco" };
-            return new List<Studente> { studente1, studente2 };
-        }
-
-        public Studente RestituisciStudente(int id)
-        {
-            return RestituisciListaStudenti().Where(x => x.Id == id).FirstOrDefault();
-        }
-
     }
 }

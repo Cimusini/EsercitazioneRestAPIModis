@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ModisAPI.Models;
 using ModisAPI.WorkerServices;
@@ -22,7 +18,7 @@ namespace ModisAPI.Controllers
 
         // GET: api/Studenti
         [HttpGet]
-        public IEnumerable<Studente> Get()
+        public IEnumerable<ViewModelStudente> Get()
         {
             return worker.RestituisciListaStudenti();
         }
