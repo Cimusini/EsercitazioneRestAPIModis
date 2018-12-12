@@ -22,7 +22,7 @@ namespace ModisAPI.WorkerServices
             db.SaveChanges();
         }
 
-        public void EliminaStudente(int id)
+        public void CancellaStudente(int id)
         {
             db.Entry(RestituisciStudente(id)).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
             db.SaveChanges();
@@ -60,7 +60,7 @@ namespace ModisAPI.WorkerServices
             throw new NotImplementedException();
         }
 
-        public void EliminaStudente(int id)
+        public void CancellaStudente(int id)
         {
             throw new NotImplementedException();
         }
