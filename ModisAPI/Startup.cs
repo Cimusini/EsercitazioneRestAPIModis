@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ModisAPI.Models;
 using ModisAPI.WorkerServices;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -20,8 +22,12 @@ namespace ModisAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            var connectionstring = Configuration.GetConnectionString("ModisConnectionString");
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IWorkerServiceStudenti, WorkerServiceSQLServerDB>();
+            services.AddDbContext<ModisContext>(opt => opt.UseSqlServer(connectionstring));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Modis API", Version = "v1" });

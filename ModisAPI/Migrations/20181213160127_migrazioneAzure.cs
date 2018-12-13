@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ModisAPI.Migrations
 {
-    public partial class CreazioneDatabase : Migration
+    public partial class migrazioneAzure : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,7 +32,8 @@ namespace ModisAPI.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(nullable: true),
-                    Cognome = table.Column<string>(nullable: true)
+                    Cognome = table.Column<string>(nullable: true),
+                    Indirizzo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

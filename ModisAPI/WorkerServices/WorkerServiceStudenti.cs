@@ -12,9 +12,9 @@ namespace ModisAPI.WorkerServices
     {
         private ModisContext db;
 
-        public WorkerServiceSQLServerDB()
+        public WorkerServiceSQLServerDB(ModisContext _db)
         {
-            db = new ModisContext();
+            db = _db;
         }
 
         public void CreaStudente(Studente studente)
