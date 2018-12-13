@@ -23,7 +23,7 @@ namespace ModisAPI.Controllers
             return worker.RestituisciListaStudenti();
         }
 
-        // GET: api/Studenti/5
+        // GET: api/Studenti/5 ritorna lo studente con le sue info
         [HttpGet("{id}", Name = "Get")]
         public Studente Get(int id)
         {
