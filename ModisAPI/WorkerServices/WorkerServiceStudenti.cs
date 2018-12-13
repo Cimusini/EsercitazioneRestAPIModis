@@ -54,7 +54,6 @@ namespace ModisAPI.WorkerServices
                         CorsoId = z.Corso.CorsoId,
                         Nome = z.Corso.Nome,
                         DataInizio = z.Corso.DataInizio,
-                        Livello = z.Corso.Livello,
                         NumeroMassimoPartecipanti = z.Corso.NumeroMassimoPartecipanti
                     }).ToList()
             }).ToList();
