@@ -10,8 +10,8 @@ using ModisAPI.Models;
 namespace ModisAPI.Migrations
 {
     [DbContext(typeof(ModisContext))]
-    [Migration("20181211083309_CreazioneDatabase")]
-    partial class CreazioneDatabase
+    [Migration("20181213160127_migrazioneAzure")]
+    partial class migrazioneAzure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,6 +49,8 @@ namespace ModisAPI.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Cognome");
+
+                    b.Property<string>("Indirizzo");
 
                     b.Property<string>("Nome");
 
