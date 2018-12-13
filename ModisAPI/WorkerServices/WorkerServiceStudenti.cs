@@ -61,7 +61,6 @@ namespace ModisAPI.WorkerServices
 
         public Studente RestituisciStudente(int id)
         {
-
             //return db.Studenti.Find(id); se siamo sicuri sia una chiave 
             return db.Studenti.Where(x => x.Id == id).FirstOrDefault();
         }
